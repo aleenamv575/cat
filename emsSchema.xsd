@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ems:schema xmlns:ems="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/empSchema" xmlns:tns="http://www.example.org/emsSchema" elementFormDefault="qualified">
+<ems:element name="Company">
+	<ems:complexType>
+		<ems:sequence>
+			<ems:element name="Employee" maxOccurs="unbounded">
+				<ems:complexType>
+					<ems:sequence>
+						<ems:element name="Emp-ID" type="ems:integer"/>
+						<ems:element name="Emp-name" type="ems:string"/>
+						<ems:element name="Emp-age" type="ems:integer"/>
+						<ems:element name="Emp-salary">
+							<ems:simpleType>
+								<ems:restriction base="ems:integer">
+									<ems:minInclusive value="50000"/>
+									<ems:maxInclusive value="200000"/>
+								</ems:restriction>
+							</ems:simpleType>
+						</ems:element>
+						<ems:element name="Emp-emailid" type="ems:string"/>
+						<ems:element name="Emp-phonenum" type="ems:integer"/>
+						<ems:element name="Emp-designation" type="ems:string"/>
+					</ems:sequence>
+				</ems:complexType>
+			</ems:element>
+		</ems:sequence>
+	</ems:complexType>
+	<ems:unique name="emp_ID">
+  		<ems:selector xpath="ems:id"/>
+  		<ems:field xpath="@EmployeeID"/>
+ 	</ems:unique>
+</ems:element>
+</ems:schema>
+
